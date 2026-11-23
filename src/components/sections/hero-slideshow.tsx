@@ -93,7 +93,7 @@ export function HeroSlideshow({ content, id = "top" }: HeroSlideshowProps) {
                   {slide.media.caption}
                 </MediaCaption>
               )}
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(9_9_15/.55)_0%,rgb(9_9_15/0)_30%,rgb(9_9_15/.85)_100%)]" />
+              <div className="absolute inset-0 scrim-hero" />
 
               <div className="absolute inset-x-0 bottom-0">
                 <Container
@@ -137,12 +137,13 @@ export function HeroSlideshow({ content, id = "top" }: HeroSlideshowProps) {
         >
           {slides.map((slide, position) => {
             const active = position === index
+            const number = `0${position + 1}`
             return (
               <li key={slide.lines.join()}>
                 <button
                   type="button"
                   onClick={() => goTo(position)}
-                  aria-label={labels.goTo.replace("{n}", String(position + 1))}
+                  aria-label={labels.goTo.replace("{n}", number)}
                   aria-current={active}
                   className={cn(
                     "relative flex min-h-11 min-w-11 items-center justify-end px-3 type-counter max-stack:justify-center",
@@ -166,7 +167,7 @@ export function HeroSlideshow({ content, id = "top" }: HeroSlideshowProps) {
                       }}
                     />
                   </span>
-                  <span>0{position + 1}</span>
+                  <span>{number}</span>
                 </button>
               </li>
             )

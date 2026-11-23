@@ -4,13 +4,7 @@ import Link from "next/link"
 import { useParams, usePathname } from "next/navigation"
 import { cn } from "cn"
 
-import {
-  defaultLocale,
-  hasLocale,
-  isPublished,
-  localeLabels,
-  locales,
-} from "@/i18n/config"
+import { defaultLocale, hasLocale, isPublished, locales } from "@/i18n/config"
 
 type LanguageToggleProps = { label: string; className?: string }
 
@@ -41,7 +35,7 @@ export function LanguageToggle({ label, className }: LanguageToggleProps) {
     <Link
       href={pathname.replace(`/${current}`, `/${target}`)}
       hrefLang={target}
-      aria-label={`${label} (${localeLabels[target]})`}
+      aria-label={`${text}, ${label}`}
       className={classes}
     >
       {text}

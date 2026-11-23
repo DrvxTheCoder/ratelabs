@@ -337,7 +337,7 @@ export const fr: SiteContent = {
       title: "Une stack moderne, choisie pour la fiabilité",
       lead: "Des technologies éprouvées et largement adoptées, pour des logiciels faciles à maintenir et à faire évoluer.",
       labels: {
-        advance: "{name} : afficher la technologie suivante",
+        advance: "Afficher la technologie suivante",
         show: "Afficher {name}",
       },
       categories: [

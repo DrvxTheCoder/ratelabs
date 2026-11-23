@@ -18,7 +18,7 @@ export type HeaderContent = Block & {
 
 export type SlideshowLabels = {
   region: string
-  /** `{n}` is replaced by the slide number. */
+  /** `{n}` is replaced by the slide number ("01"). */
   goTo: string
   pause: string
   resume: string
@@ -114,8 +114,8 @@ export type TechCategory = {
 
 export type StackContent = HeaderContent & {
   labels: {
-    /** `{name}` is replaced by the technology. */
     advance: string
+    /** `{name}` is replaced by the technology. */
     show: string
   }
   categories: TechCategory[]

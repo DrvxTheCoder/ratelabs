@@ -14,7 +14,7 @@ export type CardStackItem = {
 
 type CardStackProps = {
   items: CardStackItem[]
-  /** `{name}` is replaced by the item's name. */
+  /** In `show`, `{name}` is replaced by the item's name. */
   labels: { advance: string; show: string }
 }
 
@@ -163,7 +163,6 @@ export function CardStack({ items, labels }: CardStackProps) {
               onClick={advance}
               tabIndex={front ? 0 : -1}
               aria-hidden={!front}
-              aria-label={labels.advance.replace("{name}", item.name)}
               className={cn(
                 cardFace,
                 "px-3.5 py-5",
@@ -180,6 +179,7 @@ export function CardStack({ items, labels }: CardStackProps) {
                 <span className="mt-2 block max-w-[150px] type-caption leading-[1.4] text-ink-2">
                   {item.description}
                 </span>
+                <span className="sr-only">{labels.advance}</span>
               </span>
             </button>
           )

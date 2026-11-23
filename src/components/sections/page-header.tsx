@@ -71,7 +71,7 @@ export function PageHeader({ content, className }: PageHeaderProps) {
         captionPosition="none"
         className="absolute inset-0 -z-10"
       >
-        <div className="absolute inset-0 bg-void/45" />
+        <div className="absolute inset-0 scrim-band" />
       </MediaFrame>
       <div
         ref={root}

@@ -20,7 +20,7 @@ export function FinalCta({ content, id }: FinalCtaProps) {
         captionPosition="none"
         className="absolute inset-0 -z-10"
       >
-        <div className="absolute inset-0 bg-void/45" />
+        <div className="absolute inset-0 scrim-band" />
       </MediaFrame>
       <div className="flex max-w-[720px] flex-col items-center">
         <Eyebrow tone="dark" star={false}>

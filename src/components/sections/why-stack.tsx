@@ -109,7 +109,7 @@ export function WhyStack({ content, id, space = "both" }: WhyStackProps) {
               <div className="flex h-full origin-top overflow-hidden rounded-panel border border-line bg-white shadow-panel">
                 <div className="flex min-w-0 flex-[1_1_50%] flex-col justify-between gap-10 px-6 py-8 stack:px-12 stack:py-11">
                   <p className="type-eyebrow text-ink-2">
-                    0{index + 1} / 0{content.cards.length}
+                    {`0${index + 1} / 0${content.cards.length}`}
                   </p>
                   <div>
                     <h3 className="mb-4 type-h2">{card.title}</h3>

@@ -61,7 +61,7 @@ export function SectorSlideshow({ content, id }: SectorSlideshowProps) {
                 captionPosition="none"
                 className="absolute inset-0"
               />
-              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgb(9_9_15/.7)_0%,rgb(9_9_15/0)_60%)]" />
+              <div className="absolute inset-0 scrim-start" />
               {!slide.media.src && (
                 <MediaCaption
                   position="top-right"
@@ -92,7 +92,7 @@ export function SectorSlideshow({ content, id }: SectorSlideshowProps) {
             <LongArrowLeftIcon />
           </IconButton>
           <span className="min-w-[52px] text-center">
-            0{index + 1} / 0{slides.length}
+            {`0${index + 1} / 0${slides.length}`}
           </span>
           <IconButton label={labels.next ?? ""} onClick={next}>
             <LongArrowRightIcon />
