@@ -1,9 +1,14 @@
-import { Big_Shoulders, JetBrains_Mono, Work_Sans } from "next/font/google"
+import { JetBrains_Mono, Work_Sans } from "next/font/google"
+import localFont from "next/font/local"
 
-/** Headlines. The `opsz` axis lets us pin the display cut (see globals.css). */
-const bigShoulders = Big_Shoulders({
-  subsets: ["latin"],
-  axes: ["opsz"],
+/**
+ * Headlines. Self-hosted because Google has folded "Big Shoulders Display" into
+ * "Big Shoulders", whose display cut is about 6% wider than the approved design.
+ * License: src/assets/fonts/OFL.txt.
+ */
+const bigShouldersDisplay = localFont({
+  src: "../assets/fonts/big-shoulders-display-latin.woff2",
+  weight: "100 900",
   variable: "--font-big-shoulders",
 })
 
@@ -20,7 +25,7 @@ const jetBrainsMono = JetBrains_Mono({
 })
 
 export const fontVariables = [
-  bigShoulders.variable,
+  bigShouldersDisplay.variable,
   workSans.variable,
   jetBrainsMono.variable,
 ].join(" ")
