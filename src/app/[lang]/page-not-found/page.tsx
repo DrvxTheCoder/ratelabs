@@ -1,12 +1,12 @@
 import type { Metadata } from "next"
 
-import { getDictionary } from "@/i18n/get-dictionary"
+import { getContent } from "@/content"
 
 import NotFound from "../not-found"
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { notFound } = await getDictionary()
-  return { title: notFound.title, robots: { index: false } }
+  const { meta } = await getContent()
+  return { title: meta.notFound.title, robots: { index: false } }
 }
 
 /** Static 404 target: the proxy rewrites unknown paths here. */

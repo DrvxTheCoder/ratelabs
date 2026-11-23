@@ -1,10 +1,16 @@
 import { NextResponse, type NextRequest } from "next/server"
 
-import { defaultLocale, hasLocale, type Locale } from "@/i18n/config"
-import { navLinks } from "@/lib/site"
+import { routes } from "@/content/site"
+import {
+  defaultLocale,
+  hasLocale,
+  publishedLocales,
+  type Locale,
+} from "@/i18n/config"
 
 const NOT_FOUND_PAGE = "/page-not-found"
 
+/** Best published match for the browser's languages. */
 function preferredLocale(request: NextRequest): Locale {
   const header = request.headers.get("accept-language") ?? ""
 
@@ -19,7 +25,12 @@ function preferredLocale(request: NextRequest): Locale {
     })
     .sort((a, b) => b.weight - a.weight)
 
-  return ranked.map((entry) => entry.language).find(hasLocale) ?? defaultLocale
+  return (
+    ranked
+      .map((entry) => entry.language)
+      .filter(hasLocale)
+      .find((locale) => publishedLocales.includes(locale)) ?? defaultLocale
+  )
 }
 
 export function proxy(request: NextRequest) {
@@ -32,7 +43,7 @@ export function proxy(request: NextRequest) {
   }
 
   const route = `/${rest.join("/")}`
-  if (navLinks.some((link) => link.href === route)) return
+  if ((routes as readonly string[]).includes(route)) return
 
   request.nextUrl.pathname = `/${segment}${NOT_FOUND_PAGE}`
   return NextResponse.rewrite(request.nextUrl, { status: 404 })

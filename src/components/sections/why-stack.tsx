@@ -16,13 +16,18 @@ const STICKY_TOP = 112
 const LIFT = 14
 const SHRINK = 0.05
 
-type WhyStackProps = { content: WhyContent; id?: string }
+type WhyStackProps = {
+  content: WhyContent
+  id?: string
+  /** `bottom` when the previous section already leaves room above. */
+  space?: "both" | "bottom"
+}
 
 /**
  * Sticky stacking cards. Each card slides over the previous ones, which scale
  * down and lift slightly. Under 761px, or with reduced motion, a plain list.
  */
-export function WhyStack({ content, id }: WhyStackProps) {
+export function WhyStack({ content, id, space = "both" }: WhyStackProps) {
   const list = useRef<HTMLOListElement>(null)
 
   useGSAP(
@@ -86,7 +91,7 @@ export function WhyStack({ content, id }: WhyStackProps) {
   )
 
   return (
-    <Section id={id} lang={content.lang} space="both">
+    <Section id={id} lang={content.lang} space={space}>
       <Container>
         <SectionHeader
           align="start"
