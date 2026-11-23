@@ -52,6 +52,8 @@
   /* Layout */
   --container-page: 1200px;
   --spacing-gutter: 24px;
+  /* Side padding of full-bleed layouts (hero): widens with the screen. */
+  --spacing-bleed: clamp(1.5rem, 4.2vw, 7.5rem);
   --spacing-section: clamp(4.5rem, 3.429rem + 4.762vw, 7rem);
   --spacing-nav-offset: 72px;
   --spacing-sticky: 112px;

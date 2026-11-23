@@ -9,7 +9,6 @@ import { useReducedMotion } from "@/components/motion/use-media-query"
 import { useSlideTransitions } from "@/components/motion/use-slide-transitions"
 import { useSlideshow } from "@/components/motion/use-slideshow"
 import { Button } from "@/components/ui/button"
-import { Container } from "@/components/ui/container"
 import { MediaCaption, MediaFrame } from "@/components/ui/media-frame"
 import { PauseButton } from "@/components/ui/pause-button"
 import { Section } from "@/components/ui/section"
@@ -57,7 +56,7 @@ export function HeroSlideshow({ content, id = "top" }: HeroSlideshowProps) {
       surface="dark"
       space="none"
       aria-label={labels.region}
-      className="relative h-[clamp(640px,100svh,780px)] overflow-hidden stack:h-[780px]"
+      className="relative h-svh min-h-[640px] overflow-hidden"
       {...rootProps}
     >
       <div aria-live={paused ? "polite" : "off"}>
@@ -96,11 +95,8 @@ export function HeroSlideshow({ content, id = "top" }: HeroSlideshowProps) {
               <div className="absolute inset-0 scrim-hero" />
 
               <div className="absolute inset-x-0 bottom-0">
-                <Container
-                  inset
-                  className="flex flex-wrap items-end justify-between gap-8 pb-18 max-stack:pb-26"
-                >
-                  <div className="max-w-[680px]">
+                <div className="flex flex-wrap items-end justify-between gap-8 px-bleed pb-18 max-stack:pb-26">
+                  <div className="flex-[1_1_min(100%,600px)]">
                     <Heading
                       aria-label={headlineText(slide.lines)}
                       className="mb-5 type-hero"
@@ -123,7 +119,7 @@ export function HeroSlideshow({ content, id = "top" }: HeroSlideshowProps) {
                       {slide.cta.label}
                     </Button>
                   </div>
-                </Container>
+                </div>
               </div>
             </div>
           )
