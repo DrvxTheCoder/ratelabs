@@ -1,6 +1,6 @@
-import { PageHero } from "@/components/sections/page-hero"
-import { Ticker } from "@/components/sections/ticker"
-import { WorkGrid } from "@/components/sections/work-grid"
+import { PageHero } from "@/legacy/components/sections/page-hero"
+import { Ticker } from "@/legacy/components/sections/ticker"
+import { WorkGrid } from "@/legacy/components/sections/work-grid"
 import { getDictionary } from "@/i18n/get-dictionary"
 import { pageMetadata } from "@/lib/metadata"
 

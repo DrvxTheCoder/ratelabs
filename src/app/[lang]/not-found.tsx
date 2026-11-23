@@ -1,6 +1,6 @@
-import { TransitionLink } from "@/components/motion/page-transition"
-import { buttonVariants } from "@/components/ui/button"
-import { SectionEyebrow } from "@/components/ui/section-heading"
+import { TransitionLink } from "@/legacy/components/motion/page-transition"
+import { buttonVariants } from "@/legacy/components/ui/button"
+import { SectionEyebrow } from "@/legacy/components/ui/section-heading"
 import { getDictionary } from "@/i18n/get-dictionary"
 
 export default async function NotFound() {

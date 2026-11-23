@@ -1,8 +1,8 @@
 import { ArrowUpRightIcon } from "lucide-react"
 
-import { Reveal } from "@/components/motion/reveal"
-import { ContactForm } from "@/components/sections/contact-form"
-import { PageHero } from "@/components/sections/page-hero"
+import { Reveal } from "@/legacy/components/motion/reveal"
+import { ContactForm } from "@/legacy/components/sections/contact-form"
+import { PageHero } from "@/legacy/components/sections/page-hero"
 import { getDictionary } from "@/i18n/get-dictionary"
 import { pageMetadata } from "@/lib/metadata"
 import { siteConfig } from "@/lib/site"

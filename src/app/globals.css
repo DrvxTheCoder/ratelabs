@@ -1,229 +1,246 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
+/* ==========================================================================
+   Design tokens: the single source for colour, type, radius, shadow, layout.
+   ========================================================================== */
+@theme {
+  /* Only brand colours exist: Tailwind's default palette is switched off. */
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-void: #09090f;
+  --color-surface: #181824;
+  --color-ash: #9090a8;
+  --color-offwhite: #f4f4f0;
+  --color-orange: #ff5c1a;
+  --color-ink-2: #4a4a58;
+  --color-mist: #b4b4c6;
+  --color-mist-2: #d8d8e2;
+  --color-white: #ffffff;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-archivo);
-    --font-heading: var(--font-archivo);
-  --color-brand: var(--brand);
-  --color-brand-hover: var(--brand-hover);
-  --color-brand-foreground: var(--brand-foreground);
-  --color-brand-text: var(--brand-text);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  /* Hairlines */
+  --color-line: rgb(9 9 15 / 0.06);
+  --color-line-2: rgb(9 9 15 / 0.1);
+  --color-line-3: rgb(9 9 15 / 0.14);
+  --color-line-dark: #24243a;
+  --color-line-ring: rgb(244 244 240 / 0.35);
+  --color-line-nav: rgb(244 244 240 / 0.5);
+  --color-track: rgb(244 244 240 / 0.3);
+  --color-glass: rgb(244 244 240 / 0.14);
+  --color-glass-light: rgb(244 244 240 / 0.86);
+
+  --font-*: initial;
+  --font-display:
+    var(--font-big-shoulders), "Arial Narrow", "Helvetica Neue", sans-serif;
+  --font-sans: var(--font-work-sans), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  --radius-*: initial;
+  --radius-media: 4px;
+  --radius-card: 6px;
+  --radius-inset: 8px;
+  --radius-panel: 12px;
+  --radius-deck: 14px;
+  --radius-full: 999px;
+
+  --shadow-*: initial;
+  --shadow-card: 0 1px 2px rgb(9 9 15 / 0.05);
+  --shadow-panel: 0 8px 32px rgb(9 9 15 / 0.06);
+  --shadow-deck: 0 8px 24px rgb(9 9 15 / 0.06);
+  --shadow-nav: 0 6px 28px rgb(9 9 15 / 0.06);
+
+  /* Layout */
+  --container-page: 1200px;
+  --spacing-gutter: 24px;
+  --spacing-section: clamp(4.5rem, 3.429rem + 4.762vw, 7rem);
+  --spacing-nav-offset: 72px;
+  --spacing-sticky: 112px;
+
+  /* The two structural breakpoints of the design. */
+  --breakpoint-stack: 761px;
+  --breakpoint-nav: 821px;
 }
 
-:root {
-  /* Ratel Labs brand: #1E1E26 #343045 #8E8FA5 #EDEBE4 #E8621A */
-  --background: #f7f6f2;
-  --foreground: #1e1e26;
-  --card: #edebe4;
-  --card-foreground: #1e1e26;
-  --popover: #ffffff;
-  --popover-foreground: #1e1e26;
-  --primary: #1e1e26;
-  --primary-foreground: #f7f6f2;
-  --secondary: #edebe4;
-  --secondary-foreground: #1e1e26;
-  --muted: #edebe4;
-  /* #8E8FA5 is 2.66:1 on bone, so text uses a darker step of the same hue. */
-  --muted-foreground: #5c5c72;
-  --accent: #e3e0d6;
-  --accent-foreground: #1e1e26;
-  --destructive: #b3261e;
-  --border: #dcd9ce;
-  --input: #8e8fa5;
-  --ring: #b4460f;
-  --brand: #e8621a;
-  --brand-hover: #f07a36;
-  /* White on #E8621A is 3.39:1, ink is 4.88:1. */
-  --brand-foreground: #1e1e26;
-  /* Orange used as small text on light surfaces. */
-  --brand-text: #b4460f;
-  --chart-1: #e8621a;
-  --chart-2: #343045;
-  --chart-3: #8e8fa5;
-  --chart-4: #5c5c72;
-  --chart-5: #1e1e26;
-  --radius: 0.75rem;
-  --sidebar: #edebe4;
-  --sidebar-foreground: #1e1e26;
-  --sidebar-primary: #1e1e26;
-  --sidebar-primary-foreground: #f7f6f2;
-  --sidebar-accent: #e3e0d6;
-  --sidebar-accent-foreground: #1e1e26;
-  --sidebar-border: #dcd9ce;
-  --sidebar-ring: #b4460f;
-}
-
-/* Applied per section: dark bands swap tokens for everything inside them. */
-.dark {
-  --background: #1e1e26;
-  --foreground: #edebe4;
-  --card: #2b2937;
-  --card-foreground: #edebe4;
-  --popover: #2b2937;
-  --popover-foreground: #edebe4;
-  --primary: #edebe4;
-  --primary-foreground: #1e1e26;
-  --secondary: #343045;
-  --secondary-foreground: #edebe4;
-  --muted: #343045;
-  --muted-foreground: #a9abbe;
-  --accent: #343045;
-  --accent-foreground: #edebe4;
-  --destructive: #ff8a7a;
-  --border: #ffffff1f;
-  --input: #8e8fa5;
-  --ring: #e8621a;
-  --brand-text: #f07a36;
-  --sidebar: #1e1e26;
-  --sidebar-foreground: #edebe4;
-  --sidebar-primary: #e8621a;
-  --sidebar-primary-foreground: #1e1e26;
-  --sidebar-accent: #343045;
-  --sidebar-accent-foreground: #edebe4;
-  --sidebar-border: #ffffff1f;
-  --sidebar-ring: #e8621a;
-}
-
+/* ==========================================================================
+   Base
+   ========================================================================== */
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
   html {
-    @apply font-sans;
+    background: var(--color-offwhite);
+    color: var(--color-void);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
   }
+
+  body {
+    overflow-x: clip;
+  }
+
+  section[id] {
+    scroll-margin-top: var(--spacing-nav-offset);
+  }
+
+  a:hover {
+    opacity: 0.82;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  /* Focus ring follows the surface: Void on light, Off White on dark. */
+  :root,
+  [data-surface="light"] {
+    --focus-ring: var(--color-void);
+  }
+
+  [data-surface="dark"] {
+    --focus-ring: var(--color-offwhite);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 3px;
+  }
+
   ::selection {
-    background: var(--brand);
-    color: var(--brand-foreground);
+    background: var(--color-void);
+    color: var(--color-offwhite);
   }
 }
 
-@utility font-display {
-  font-family: var(--font-heading);
-  font-stretch: 62%;
-  font-weight: 900;
+/* ==========================================================================
+   Type scale. Desktop values (from 1200px) are the prototype's; the clamps
+   interpolate down to 360px.
+   ========================================================================== */
+@utility font-display-face {
+  font-family: var(--font-display);
+  /* Big Shoulders at its display optical size, whatever the rendered size. */
+  font-variation-settings: "opsz" 72;
+}
+
+@utility type-hero {
+  @apply font-display-face;
+  font-size: clamp(2.75rem, 1.893rem + 3.81vw, 4.75rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.005em;
+}
+
+@utility type-cta {
+  @apply font-display-face;
+  font-size: clamp(2.5rem, 1.857rem + 2.857vw, 4rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+@utility type-h2 {
+  @apply font-display-face;
+  font-size: clamp(2.25rem, 1.714rem + 2.381vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+@utility type-statement {
+  @apply font-display-face;
+  font-size: clamp(2rem, 1.571rem + 1.905vw, 3rem);
+  font-weight: 600;
+  line-height: 1.08;
+}
+
+@utility type-stat {
+  @apply font-display-face;
+  font-size: clamp(2.75rem, 2.429rem + 1.429vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1;
+}
+
+@utility type-tech {
+  @apply font-display-face;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+@utility type-category {
+  @apply font-display-face;
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
-  letter-spacing: 0;
 }
 
-@utility container-page {
-  width: 100%;
-  max-width: 88rem;
-  margin-inline: auto;
-  padding-inline: clamp(1rem, 4vw, 3rem);
+@utility type-wordmark {
+  @apply font-display-face;
+  font-size: 1.625rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
-/* The bend of the logo, as a section silhouette. */
-@utility chevron-band {
-  --chevron: clamp(1.5rem, 5vw, 4.5rem);
-  clip-path: polygon(
-    0 0,
-    50% var(--chevron),
-    100% 0,
-    100% calc(100% - var(--chevron)),
-    50% 100%,
-    0 calc(100% - var(--chevron))
-  );
+@utility type-title {
+  font-size: 1.125rem;
+  font-weight: 600;
 }
 
-@utility chevron-top {
-  --chevron: clamp(1.5rem, 5vw, 4.5rem);
-  clip-path: polygon(0 0, 50% var(--chevron), 100% 0, 100% 100%, 0 100%);
+@utility type-title-sm {
+  font-size: 1.0625rem;
+  font-weight: 600;
 }
 
-@utility bg-grain {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+@utility type-lead {
+  font-size: 1.0625rem;
 }
 
-/* First-screen entrance runs in CSS so it never waits for hydration. */
-@keyframes word-rise {
-  from {
-    transform: translateY(110%);
-  }
+@utility type-body {
+  font-size: 1rem;
 }
 
-@keyframes fade-rise {
-  from {
+@utility type-body-sm {
+  font-size: 0.9375rem;
+}
+
+@utility type-copy {
+  font-size: 0.875rem;
+}
+
+@utility type-caption {
+  font-size: 0.8125rem;
+}
+
+/* JetBrains Mono: eyebrows, counters, pills, captions. */
+@utility type-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@utility type-eyebrow-sm {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@utility type-counter {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+@utility type-mono {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+}
+
+/* ==========================================================================
+   Motion: entrance states painted before hydration, only where GSAP will run.
+   ========================================================================== */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  [data-reveal-root="pending"] [data-word],
+  [data-reveal-root="pending"] [data-reveal] {
     opacity: 0;
-    transform: translateY(1.25rem);
-  }
-}
-
-@keyframes marquee {
-  to {
-    transform: translateX(calc(-100% - var(--marquee-gap)));
-  }
-}
-
-.word-reveal-word {
-  display: inline-block;
-  overflow: clip;
-  vertical-align: top;
-  padding-block: 0.14em 0.04em;
-  margin-block: -0.14em -0.04em;
-}
-
-.word-reveal-word > span {
-  display: inline-block;
-  animation: word-rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-  animation-delay: calc(var(--word-index) * 55ms + 80ms);
-}
-
-.fade-rise {
-  animation: fade-rise 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-  animation-delay: var(--delay, 0ms);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .word-reveal-word > span,
-  .fade-rise {
-    animation: none;
-  }
-
-  [data-slot="marquee-track"] {
-    animation-play-state: paused !important;
   }
 }

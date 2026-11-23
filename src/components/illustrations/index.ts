@@ -1,0 +1,6 @@
+export { BusinessToolsIllustration } from "./business-tools"
+export { IntegrationsIllustration } from "./integrations"
+export { MaintenanceIllustration } from "./maintenance"
+export { MobileAppIllustration } from "./mobile-app"
+export { ModernisationIllustration } from "./modernisation"
+export { WebPlatformIllustration } from "./web-platform"

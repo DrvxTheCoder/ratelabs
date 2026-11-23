@@ -1,21 +1,21 @@
-import { Parallax } from "@/components/motion/parallax"
-import { Reveal } from "@/components/motion/reveal"
-import { ScrollText } from "@/components/motion/scroll-text"
-import { PageHero } from "@/components/sections/page-hero"
-import { StatsRow } from "@/components/sections/stats-row"
+import { Parallax } from "@/legacy/components/motion/parallax"
+import { Reveal } from "@/legacy/components/motion/reveal"
+import { ScrollText } from "@/legacy/components/motion/scroll-text"
+import { PageHero } from "@/legacy/components/sections/page-hero"
+import { StatsRow } from "@/legacy/components/sections/stats-row"
 import {
   Card,
   CardContent,
   CardDescription,
   CardTitle,
-} from "@/components/ui/card"
-import { Marquee } from "@/components/ui/marquee"
-import { PlaceholderImage } from "@/components/ui/placeholder-image"
+} from "@/legacy/components/ui/card"
+import { Marquee } from "@/legacy/components/ui/marquee"
+import { PlaceholderImage } from "@/legacy/components/ui/placeholder-image"
 import {
   SectionEyebrow,
   SectionHeading,
   SectionTitle,
-} from "@/components/ui/section-heading"
+} from "@/legacy/components/ui/section-heading"
 import { getDictionary } from "@/i18n/get-dictionary"
 import { pageMetadata } from "@/lib/metadata"
 import { siteConfig } from "@/lib/site"

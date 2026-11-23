@@ -1,10 +1,10 @@
 import { Archivo } from "next/font/google"
 
-import "../globals.css"
+import "../../legacy/legacy.css"
 
-import { SiteFooter } from "@/components/layout/site-footer"
-import { SiteHeader } from "@/components/layout/site-header"
-import { PageTransition } from "@/components/motion/page-transition"
+import { SiteFooter } from "@/legacy/components/layout/site-footer"
+import { SiteHeader } from "@/legacy/components/layout/site-header"
+import { PageTransition } from "@/legacy/components/motion/page-transition"
 import { locales } from "@/i18n/config"
 import { getDictionary, getLocale } from "@/i18n/get-dictionary"
 

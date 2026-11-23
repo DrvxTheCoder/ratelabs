@@ -1,0 +1,9 @@
+import type { ComponentProps } from "react"
+
+export function FramerLogo(props: ComponentProps<"svg">) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+      <path fill="#0055FF" d="M4 0h16v8h-8zM4 8h8l8 8H4zM4 16h8v8z" />
+    </svg>
+  )
+}
