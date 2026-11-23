@@ -23,10 +23,8 @@ const PageTransitionContext =
 
 function usePageTransition() {
   const context = React.useContext(PageTransitionContext)
-  if (!context) {
-    throw new Error("usePageTransition must be used in <PageTransition>.")
-  }
-  return context
+  const router = useRouter()
+  return context ?? { navigate: (href: string) => router.push(href) }
 }
 
 function PageTransition({ children }: { children: React.ReactNode }) {

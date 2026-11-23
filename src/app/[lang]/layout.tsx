@@ -1,48 +1,38 @@
-import { Archivo } from "next/font/google"
+import "../globals.css"
 
-import "../../legacy/legacy.css"
-
-import { SiteFooter } from "@/legacy/components/layout/site-footer"
-import { SiteHeader } from "@/legacy/components/layout/site-header"
-import { PageTransition } from "@/legacy/components/motion/page-transition"
+import { Footer } from "@/components/layout/footer"
+import { Navbar } from "@/components/layout/navbar"
+import { MotionRoot } from "@/components/motion/motion-root"
+import { getContent, getLocale } from "@/content"
 import { locales } from "@/i18n/config"
-import { getDictionary, getLocale } from "@/i18n/get-dictionary"
 
-const archivo = Archivo({
-  subsets: ["latin"],
-  axes: ["wdth"],
-  variable: "--font-archivo",
-})
+import { fontVariables } from "../fonts"
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }))
 }
 
-export default async function RootLayout({
-  children,
-}: LayoutProps<"/[lang]">) {
-  const [locale, dict] = await Promise.all([getLocale(), getDictionary()])
+export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
+  const [locale, { nav, footer }] = await Promise.all([
+    getLocale(),
+    getContent(),
+  ])
 
   return (
-    <html
-      lang={locale}
-      className={`${archivo.variable} antialiased`}
-      data-scroll-behavior="smooth"
-    >
-      <body className="flex min-h-svh flex-col overflow-x-clip">
+    <html lang={locale} className={fontVariables}>
+      <body className="flex min-h-svh flex-col">
         <a
           href="#main"
-          className="fixed top-3 left-3 z-60 -translate-y-20 rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground focus-visible:translate-y-0"
+          className="fixed top-3 left-3 z-70 -translate-y-20 rounded-full bg-void px-5 py-3 type-copy font-medium text-offwhite focus-visible:translate-y-0"
         >
-          {dict.nav.skip}
+          {nav.labels.skip}
         </a>
-        <PageTransition>
-          <SiteHeader nav={dict.nav} />
-          <main id="main" className="flex-1">
-            {children}
-          </main>
-          <SiteFooter />
-        </PageTransition>
+        <Navbar nav={nav} />
+        <main id="main" tabIndex={-1} className="flex-1 outline-none">
+          {children}
+        </main>
+        <Footer content={footer} />
+        <MotionRoot />
       </body>
     </html>
   )
