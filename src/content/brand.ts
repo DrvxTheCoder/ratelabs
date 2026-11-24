@@ -1,8 +1,13 @@
-import type { ComponentProps, ComponentType } from "react"
+import { Logomark } from "@/assets/brand/logomark"
+import { PrimaryLogo } from "@/assets/brand/primary"
+import { Submark } from "@/assets/brand/submark"
 
-/**
- * Register the master wordmark here (an SVG component using `currentColor`) and
- * it replaces the text stand-in everywhere.
- */
-export const brandLogo: ComponentType<ComponentProps<"svg">> | undefined =
-  undefined
+/** Brand lockups. Master files are in `assets/brand`; all use `currentColor`. */
+export const brandLogos = {
+  /** Flat lockup: stays legible at navbar size. */
+  submark: Submark,
+  /** Folded lockup with ".net": needs room. */
+  primary: PrimaryLogo,
+  /** "RL" symbol, for where the name is already known. */
+  logomark: Logomark,
+}

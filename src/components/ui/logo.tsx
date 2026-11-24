@@ -1,25 +1,19 @@
-import type { ComponentProps, ComponentType } from "react"
+import type { ComponentProps } from "react"
 import { cn } from "cn"
 
-import { brandLogo } from "@/content/brand"
+import { brandLogos } from "@/content/brand"
 
-type LogoProps = ComponentProps<"span"> & {
-  /** Master vector. Defaults to the one registered in `content/brand.ts`. */
-  svg?: ComponentType<ComponentProps<"svg">>
+type LogoProps = Omit<ComponentProps<"span">, "children"> & {
+  variant?: keyof typeof brandLogos
 }
 
-/** Text stand-in until the master SVG is registered in `content/brand.ts`. */
-export function Logo({ svg: Svg = brandLogo, className, ...props }: LogoProps) {
+/** Brand lockup, coloured by `currentColor` and sized by its height. */
+export function Logo({ variant = "submark", className, ...props }: LogoProps) {
+  const Svg = brandLogos[variant]
+
   return (
-    <span
-      className={cn("block type-wordmark whitespace-nowrap", className)}
-      {...props}
-    >
-      {Svg ? (
-        <Svg role="img" aria-label="Ratel Labs" className="h-[1.5em] w-auto" />
-      ) : (
-        "Ratel Labs"
-      )}
+    <span className={cn("block h-9 w-fit", className)} {...props}>
+      <Svg role="img" aria-label="Ratel Labs" className="block h-full w-auto overflow-visible" />
     </span>
   )
 }

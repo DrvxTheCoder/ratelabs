@@ -1,3 +1,4 @@
+import { FadeUp } from "@/components/motion/fade-up"
 import { Button } from "@/components/ui/button"
 import { Eyebrow } from "@/components/ui/eyebrow"
 import { MediaFrame } from "@/components/ui/media-frame"
@@ -22,7 +23,7 @@ export function FinalCta({ content, id }: FinalCtaProps) {
       >
         <div className="absolute inset-0 scrim-band" />
       </MediaFrame>
-      <div className="flex max-w-[720px] flex-col items-center">
+      <FadeUp group className="flex max-w-[720px] flex-col items-center">
         <Eyebrow tone="dark" star={false}>
           {content.eyebrow}
         </Eyebrow>
@@ -35,7 +36,7 @@ export function FinalCta({ content, id }: FinalCtaProps) {
         <Button variant="accent" href={content.cta.href}>
           {content.cta.label}
         </Button>
-      </div>
+      </FadeUp>
     </Section>
   )
 }

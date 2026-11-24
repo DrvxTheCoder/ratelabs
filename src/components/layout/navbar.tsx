@@ -84,24 +84,30 @@ export function Navbar({ nav }: { nav: NavContent }) {
     >
       <div
         className={cn(
-          "pointer-events-auto relative isolate flex w-full max-w-page items-center justify-between gap-4 border border-transparent px-gutter py-4 nav:py-7",
+          "pointer-events-auto relative isolate flex w-full max-w-page items-center justify-between gap-4 border border-transparent px-gutter py-4 nav:py-5",
           "group-data-compact/nav:mt-3.5 group-data-compact/nav:w-[calc(100%-32px)] group-data-compact/nav:max-w-[780px] group-data-compact/nav:gap-6 group-data-compact/nav:py-1.5 group-data-compact/nav:pr-1.5 group-data-compact/nav:pl-[22px]"
         )}
       >
         <span
           data-morph
           aria-hidden="true"
-          className="absolute -inset-px -z-10 rounded-full border border-line bg-glass-light opacity-0 shadow-nav backdrop-blur-[14px] group-data-compact/nav:opacity-100"
+          className="absolute -inset-px -z-10 rounded-full border border-line bg-white opacity-0 shadow-nav group-data-compact/nav:opacity-100"
         />
 
         <LocaleLink
-          href="/#top"
+          href="/"
           aria-label={nav.labels.home}
-          className="flex min-h-11 items-center nav:min-h-0"
+          className="grid min-h-11 items-center justify-items-start *:col-start-1 *:row-start-1 nav:min-h-0"
         >
+          {/* Stacked, so that one lockup crossfades into the other. */}
           <Logo
             data-morph
-            className="text-offwhite group-data-compact/nav:text-[21px] group-data-compact/nav:text-void"
+            variant="primary"
+            className="h-13 text-offwhite group-data-compact/nav:h-8 group-data-compact/nav:text-void group-data-compact/nav:opacity-0 nav:not-group-data-compact/nav:h-16"
+          />
+          <Logo
+            data-morph
+            className="h-9 text-offwhite opacity-0 group-data-compact/nav:h-[30px] group-data-compact/nav:text-void group-data-compact/nav:opacity-100"
           />
         </LocaleLink>
 

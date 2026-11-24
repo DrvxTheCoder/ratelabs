@@ -45,5 +45,8 @@ What is still a placeholder is listed in [PLACEHOLDERS.md](./PLACEHOLDERS.md).
 
 - All motion is GSAP, inside `useGSAP` and `gsap.matchMedia()`. Import from `components/motion/gsap`.
 - Animate `transform`, `opacity` and `filter` only. For layout changes use Flip, as the navbar does.
+- Scroll entrances use `FadeUp` (or `useFadeUp`); `SectionHeader` and `CardGrid` already include it.
+- Page transitions live in `page-transition.tsx`. Use `LocaleLink` for internal links, and `entranceDelay()` for entrances that play on mount.
+- Smooth scrolling is Lenis, driven by the GSAP ticker in `smooth-scroll.tsx`. Mark nested scroll areas with `data-lenis-prevent`.
 - Every animation needs a reduced-motion outcome: content visible, slideshows paused, nothing moving.
 - Pages stay mounted but hidden after navigation (Cache Components), so effects must survive being cleaned up and run again. Never rely on an id being unique across pages.

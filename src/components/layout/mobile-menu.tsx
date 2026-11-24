@@ -85,13 +85,14 @@ export function MobileMenu({ nav, className }: MobileMenuProps) {
         <Dialog.Popup
           ref={popup}
           data-surface="dark"
+          data-lenis-prevent
           className="fixed inset-0 z-60 overflow-y-auto text-offwhite outline-none"
         >
           <MenuPanel>
             <Dialog.Title className="sr-only">{nav.labels.menu}</Dialog.Title>
             <div className="flex items-center justify-between">
               <LocaleLink
-                href="/#top"
+                href="/"
                 onClick={close}
                 aria-label={nav.labels.home}
                 className="flex min-h-11 items-center"

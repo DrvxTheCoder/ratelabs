@@ -3,6 +3,7 @@
 import { useRef } from "react"
 import { cn } from "cn"
 
+import { useFadeUp } from "@/components/motion/use-fade-up"
 import { useSlideTransitions } from "@/components/motion/use-slide-transitions"
 import { useSlideshow } from "@/components/motion/use-slideshow"
 import { Container } from "@/components/ui/container"
@@ -23,6 +24,8 @@ export function SectorSlideshow({ content, id }: SectorSlideshowProps) {
   const { index, paused, next, previous, togglePause, rootProps } =
     useSlideshow({ count: slides.length, interval: 6.5 })
 
+  useFadeUp(root)
+
   useSlideTransitions(root, index, {
     fade: { duration: 1, delay: 0.2 },
     zoom: { from: 1.05, duration: 8 },
@@ -31,6 +34,7 @@ export function SectorSlideshow({ content, id }: SectorSlideshowProps) {
   return (
     <Section
       ref={root}
+      data-fade="self"
       id={id}
       lang={content.lang}
       surface="dark"

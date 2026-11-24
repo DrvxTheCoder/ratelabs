@@ -17,8 +17,6 @@ Everything on the site that is not real, verified or cleared yet, and where to c
 
 | What | State | Where |
 | --- | --- | --- |
-| Logo / wordmark | Text stand-in ("Ratel Labs", Big Shoulders 800) | Register the SVG in `src/content/brand.ts`; navbar, menu and footer pick it up |
-| Favicon | RL mark traced from an earlier brand board, recoloured to Void / Off White | `src/app/icon.svg` |
 | Open Graph image | None | Add `src/app/[lang]/opengraph-image.*` |
 | LinkedIn, GitHub URLs | Missing: shown as plain text in the footer, hidden on the contact page | `siteConfig.social` in `src/content/site.ts` |
 
@@ -28,7 +26,6 @@ Every image slot renders a dark gradient. To fill one, put the file in `public/i
 
 | Slot | Page | Art direction |
 | --- | --- | --- |
-| `heroMeeting` | Home, hero 1 | Dirigeant en réunion, bureau vitré, lumière naturelle |
 | `heroTablet` | Home, hero 2 | Deux consultantes devant une tablette, salon vitré |
 | `heroSite` | Home, hero 3 | Deux ingénieurs sur site industriel, casques, ciel dégagé |
 | `heroExchange` | Home, hero 4 | Échange client / consultant autour d'un ordinateur portable |
@@ -40,7 +37,7 @@ Every image slot renders a dark gradient. To fill one, put the file in `public/i
 | `whyEngineering` | Home, À propos | Développeur au poste de travail, deux écrans |
 | `whyDelivery` | Home, À propos | Démo client en salle de réunion, écran partagé |
 | `whySupport` | Home, À propos | Poste de supervision, tableaux de bord en temps réel |
-| `projectLpg`, `projectHr` | Home, Réalisations | Capture d'écran sur poste de travail |
+| `projectHr` | Home, Réalisations | Capture d'écran sur poste de travail |
 | `projectMoving` | Home, Réalisations | Capture d'écran sur mobile |
 | `portraitOffice` | Home, témoignage 1 | Portrait client, bureau, lumière naturelle |
 | `portraitMeeting` | Home, témoignage 2 | Portrait client, salle de réunion |

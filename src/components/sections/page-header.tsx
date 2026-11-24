@@ -4,6 +4,7 @@ import { useRef } from "react"
 import { cn } from "cn"
 
 import { gsap, MOTION, useGSAP } from "@/components/motion/gsap"
+import { entranceDelay } from "@/components/motion/page-cover"
 import {
   addWordReveal,
   HIDDEN,
@@ -36,7 +37,7 @@ export function PageHeader({ content, className }: PageHeaderProps) {
         gsap.set(element.querySelectorAll("[data-word]"), HIDDEN)
         gsap.set(details, HIDDEN)
 
-        const timeline = gsap.timeline()
+        const timeline = gsap.timeline({ delay: entranceDelay() })
         addWordReveal(timeline, element, 0.15)
         timeline.to(
           details,

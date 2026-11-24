@@ -5,11 +5,12 @@ type Slot = { src?: string; placeholder: string }
 /**
  * Every image slot on the site, shared by all locales. To swap a placeholder for
  * a photo, drop the file in `public/images` and set `src` here, e.g.
- * `src: "/images/hero-meeting.jpg"`. Nothing else has to change.
+ * `src: "/images/hero-dev-team.jpg"`. Nothing else has to change.
  */
 const slots = {
   // Hero slideshow (full bleed, 1440 × 780)
-  heroMeeting: {
+  heroDevTeam: {
+    src: "/images/hero-dev-team.jpg",
     placeholder:
       "linear-gradient(160deg, #2b2b3b 0%, #14141f 55%, #09090f 100%)",
   },
@@ -60,6 +61,7 @@ const slots = {
 
   // Project cards (384 × 420)
   projectLpg: {
+    src: "/images/touba-app.jpg",
     placeholder: "linear-gradient(160deg, #34344a 0%, #14141f 100%)",
   },
   projectHr: {

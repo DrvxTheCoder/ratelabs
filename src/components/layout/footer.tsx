@@ -48,7 +48,7 @@ export function Footer({ content }: { content: FooterContent }) {
       <Container>
         <div className="flex flex-wrap justify-between gap-12">
           <div className="max-w-[340px] flex-[1_1_280px]">
-            <Logo />
+            <Logo variant="primary" className="h-20" />
             <p className="mt-4 type-copy text-mist">{content.description}</p>
           </div>
           <div className="flex flex-wrap gap-x-18 gap-y-10">

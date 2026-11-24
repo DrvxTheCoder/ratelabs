@@ -72,6 +72,7 @@ export function MediaFrame({
           fill
           sizes={sizes}
           preload={preload}
+          quality={90}
           className="object-cover"
         />
       )}

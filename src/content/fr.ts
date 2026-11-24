@@ -78,13 +78,13 @@ export const fr: SiteContent = {
 
   nav: {
     links: [
-      { label: "Accueil", href: "/#top" },
+      { label: "Accueil", href: "/" },
       { label: "Services", href: "/#services" },
-      { label: "Réalisations", href: "/#realisations" },
-      { label: "À propos", href: "/#methode" },
-      { label: "Contact", href: "/#contact" },
+      { label: "Réalisations", href: "/work" },
+      { label: "À propos", href: "/about" },
+      { label: "Contact", href: "/contact" },
     ],
-    cta: { label: "Démarrer un projet", href: "/#contact" },
+    cta: { label: "Démarrer un projet", href: "/contact" },
     labels: {
       skip: "Aller au contenu",
       home: "Ratel Labs, retour à l'accueil",
@@ -102,7 +102,7 @@ export const fr: SiteContent = {
       navigation: {
         title: "Navigation",
         links: [
-          { label: "Accueil", href: "/#top" },
+          { label: "Accueil", href: "/" },
           { label: "Réalisations", href: "/work" },
           { label: "À propos", href: "/about" },
           { label: "Contact", href: "/contact" },
@@ -135,10 +135,8 @@ export const fr: SiteContent = {
           lines: ["Des logiciels fiables", "pour les entreprises exigeantes."],
           lead: "Plateformes web, applications mobiles et intégrations sur mesure, conçues et maintenues pour durer.",
           cta: { label: "Démarrer un projet", href: "/#contact" },
-          media: media("heroMeeting", {
-            alt: "Dirigeant en réunion dans un bureau vitré",
-            caption:
-              "PHOTO — Dirigeant en réunion, bureau vitré, lumière naturelle",
+          media: media("heroDevTeam", {
+            alt: "Équipe de développeurs échangeant devant du code affiché à l'écran",
           }),
         },
         {

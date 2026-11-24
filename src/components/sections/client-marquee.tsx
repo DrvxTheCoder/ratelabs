@@ -4,6 +4,7 @@ import { useRef } from "react"
 import { cn } from "cn"
 
 import { EASE_SOFT, gsap, MOTION, useGSAP } from "@/components/motion/gsap"
+import { FadeUp } from "@/components/motion/fade-up"
 import { Section } from "@/components/ui/section"
 import { clients, type Client } from "@/content/clients"
 import type { ClientsContent } from "@/content/types"
@@ -104,16 +105,16 @@ export function ClientMarquee({ content }: { content: ClientsContent }) {
       aria-label={content.label}
       className="overflow-hidden"
     >
-      <p className="mb-9 text-center type-eyebrow text-ink-2">
-        {content.label}
-      </p>
-      <div
+      <FadeUp className="mb-9 text-center type-eyebrow text-ink-2">
+        <p>{content.label}</p>
+      </FadeUp>
+      <FadeUp
         aria-hidden="true"
         className="flex flex-col gap-3 mask-[linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)]"
       >
         <MarqueeRow items={clients} duration={60} />
         <MarqueeRow items={[...clients].reverse()} duration={70} reversed />
-      </div>
+      </FadeUp>
     </Section>
   )
 }

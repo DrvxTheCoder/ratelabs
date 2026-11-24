@@ -17,7 +17,7 @@ export function LanguageToggle({ label, className }: LanguageToggleProps) {
     : defaultLocale
   const target = locales.find((locale) => locale !== current) ?? defaultLocale
 
-  const text = locales.map((locale) => locale.toUpperCase()).join(" / ")
+  const text = locales.map((locale) => locale.toUpperCase()).join(" | ")
   const classes = cn(
     "inline-flex min-h-11 items-center type-counter text-mist",
     className

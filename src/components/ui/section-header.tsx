@@ -1,6 +1,8 @@
 import type { ReactNode } from "react"
 import { cn } from "cn"
 
+import { FadeUp } from "@/components/motion/fade-up"
+
 import { Eyebrow } from "./eyebrow"
 
 type SectionHeaderProps = {
@@ -26,7 +28,9 @@ export function SectionHeader({
   leadClassName,
 }: SectionHeaderProps) {
   return (
-    <header
+    <FadeUp
+      as="header"
+      group
       className={cn(
         "flex flex-col",
         align === "center" ? "items-center text-center" : "items-start",
@@ -48,6 +52,6 @@ export function SectionHeader({
         </p>
       )}
       {cta && <div className="mt-8">{cta}</div>}
-    </header>
+    </FadeUp>
   )
 }

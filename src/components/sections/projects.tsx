@@ -39,7 +39,7 @@ export function Projects({
               <article>
                 <MediaFrame
                   {...project.media}
-                  sizes="(min-width: 1104px) 384px, (min-width: 712px) 50vw, 100vw"
+                  sizes="(min-width: 1104px) 640px, (min-width: 712px) 50vw, 100vw"
                   className="h-[420px] rounded-card"
                 >
                   <Pill variant="glass" className="absolute top-4 left-4">

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "lenis/dist/lenis.css";
 
 /* ==========================================================================
    Design tokens: the single source for colour, type, radius, shadow, layout.
@@ -26,8 +27,7 @@
   --color-line-ring: rgb(244 244 240 / 0.35);
   --color-line-nav: rgb(244 244 240 / 0.5);
   --color-track: rgb(244 244 240 / 0.3);
-  --color-glass: rgb(244 244 240 / 0.14);
-  --color-glass-light: rgb(244 244 240 / 0.86);
+  --color-glass: rgb(9 9 15 / 0.65);
 
   --font-*: initial;
   --font-display:
@@ -47,7 +47,7 @@
   --shadow-card: 0 1px 2px rgb(9 9 15 / 0.05);
   --shadow-panel: 0 8px 32px rgb(9 9 15 / 0.06);
   --shadow-deck: 0 8px 24px rgb(9 9 15 / 0.06);
-  --shadow-nav: 0 6px 28px rgb(9 9 15 / 0.06);
+  --shadow-nav: 0 6px 28px rgb(9 9 15 / 0.2);
 
   /* Layout */
   --container-page: 1200px;
@@ -83,6 +83,42 @@
     scroll-margin-top: var(--spacing-nav-offset);
   }
 
+  /* Page: replaced by `components/layout/scrollbar.tsx`, which needs scripts. */
+  @media (scripting: enabled) and (pointer: fine) {
+    html {
+      scrollbar-width: none;
+    }
+
+    html::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  /* Nested scroll areas (menu, textareas): a thin thumb, no track or buttons. */
+  @supports selector(::-webkit-scrollbar) {
+    :not(html)::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    :not(html)::-webkit-scrollbar-track,
+    :not(html)::-webkit-scrollbar-corner {
+      background: transparent;
+    }
+
+    :not(html)::-webkit-scrollbar-thumb {
+      border-radius: 999px;
+      background: var(--color-ash);
+    }
+  }
+
+  @supports not selector(::-webkit-scrollbar) {
+    :not(html) {
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-ash) transparent;
+    }
+  }
+
   a:hover {
     opacity: 0.82;
   }
@@ -104,6 +140,11 @@
   :focus-visible {
     outline: 2px solid var(--focus-ring);
     outline-offset: 3px;
+  }
+
+  /* Focused by same-page links only, to move the keyboard starting point. */
+  section[tabindex="-1"]:focus-visible {
+    outline: none;
   }
 
   ::selection {
@@ -168,13 +209,6 @@
   text-transform: uppercase;
 }
 
-@utility type-wordmark {
-  font-family: var(--font-display);
-  font-size: 1.625rem;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
 
 @utility type-title {
   font-size: 1.125rem;
@@ -261,7 +295,9 @@
    ========================================================================== */
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
   [data-reveal-root="pending"] [data-word],
-  [data-reveal-root="pending"] [data-reveal] {
+  [data-reveal-root="pending"] [data-reveal],
+  [data-fade="self"],
+  [data-fade="group"] > * {
     opacity: 0;
     animation: reveal-failsafe 0s 4s forwards;
   }

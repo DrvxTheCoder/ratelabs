@@ -3,6 +3,7 @@
 import { useRef } from "react"
 
 import { gsap, ScrollTrigger, useGSAP } from "@/components/motion/gsap"
+import { useFadeUp } from "@/components/motion/use-fade-up"
 import { Container } from "@/components/ui/container"
 import { MediaFrame } from "@/components/ui/media-frame"
 import { Pill } from "@/components/ui/pill"
@@ -29,6 +30,8 @@ type WhyStackProps = {
  */
 export function WhyStack({ content, id, space = "both" }: WhyStackProps) {
   const list = useRef<HTMLOListElement>(null)
+
+  useFadeUp(list, { group: true })
 
   useGSAP(
     () => {
@@ -99,7 +102,11 @@ export function WhyStack({ content, id, space = "both" }: WhyStackProps) {
           title={content.title}
           titleClassName="max-w-[640px]"
         />
-        <ol ref={list} className="mt-14 flex flex-col gap-8 stack:pb-24">
+        <ol
+          ref={list}
+          data-fade="group"
+          className="mt-14 flex flex-col gap-8 stack:pb-24"
+        >
           {content.cards.map((card, index) => (
             <li
               key={card.title}

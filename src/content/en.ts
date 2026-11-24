@@ -32,13 +32,13 @@ export const en: SiteContent = {
 
   nav: {
     links: [
-      { label: "Home", href: "/#top" },
+      { label: "Home", href: "/" },
       { label: "Services", href: "/#services" },
-      { label: "Work", href: "/#realisations" },
-      { label: "About", href: "/#methode" },
-      { label: "Contact", href: "/#contact" },
+      { label: "Work", href: "/work" },
+      { label: "About", href: "/about" },
+      { label: "Contact", href: "/contact" },
     ],
-    cta: { label: "Start a project", href: "/#contact" },
+    cta: { label: "Start a project", href: "/contact" },
     labels: {
       skip: "Skip to content",
       home: "Ratel Labs, home",

@@ -2,7 +2,10 @@ import "../globals.css"
 
 import { Footer } from "@/components/layout/footer"
 import { Navbar } from "@/components/layout/navbar"
+import { Scrollbar } from "@/components/layout/scrollbar"
 import { MotionRoot } from "@/components/motion/motion-root"
+import { PageTransition } from "@/components/motion/page-transition"
+import { SmoothScroll } from "@/components/motion/smooth-scroll"
 import { getContent, getLocale } from "@/content"
 import { locales } from "@/i18n/config"
 
@@ -27,12 +30,16 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
         >
           {nav.labels.skip}
         </a>
-        <Navbar nav={nav} />
-        <main id="main" tabIndex={-1} className="flex-1 outline-none">
-          {children}
-        </main>
-        <Footer content={footer} />
+        <PageTransition>
+          <Navbar nav={nav} />
+          <main id="main" tabIndex={-1} className="flex-1 outline-none">
+            {children}
+          </main>
+          <Footer content={footer} />
+        </PageTransition>
+        <Scrollbar />
         <MotionRoot />
+        <SmoothScroll />
       </body>
     </html>
   )

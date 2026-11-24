@@ -4,6 +4,7 @@ import type { ComponentProps } from "react"
 import Link from "next/link"
 import { useParams } from "next/navigation"
 
+import { usePageTransition } from "@/components/motion/page-transition"
 import { defaultLocale } from "@/i18n/config"
 
 type LocaleLinkProps = Omit<ComponentProps<typeof Link>, "href"> & {
@@ -14,8 +15,10 @@ type LocaleLinkProps = Omit<ComponentProps<typeof Link>, "href"> & {
   href: string
 }
 
-export function LocaleLink({ href, ...props }: LocaleLinkProps) {
+export function LocaleLink({ href, onNavigate, ...props }: LocaleLinkProps) {
   const { lang = defaultLocale } = useParams<{ lang?: string }>()
+
+  const { navigate } = usePageTransition()
 
   if (!href.startsWith("/")) {
     const external = /^https?:/.test(href)
@@ -31,5 +34,14 @@ export function LocaleLink({ href, ...props }: LocaleLinkProps) {
   const [path, hash] = href.split("#")
   const localized = `/${lang}${path === "/" ? "" : path}${hash ? `#${hash}` : ""}`
 
-  return <Link href={localized} {...props} />
+  return (
+    <Link
+      href={localized}
+      onNavigate={(event) => {
+        onNavigate?.(event)
+        if (navigate(localized)) event.preventDefault()
+      }}
+      {...props}
+    />
+  )
 }

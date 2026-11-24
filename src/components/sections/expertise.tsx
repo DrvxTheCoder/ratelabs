@@ -1,3 +1,4 @@
+import { FadeUp } from "@/components/motion/fade-up"
 import { Card } from "@/components/ui/card"
 import { CardGrid } from "@/components/ui/card-grid"
 import { Container } from "@/components/ui/container"
@@ -14,10 +15,12 @@ export function Expertise({ content }: { content: ExpertiseContent }) {
       className="pt-section pb-24 max-stack:pb-18"
     >
       <Container className="flex flex-col items-center text-center">
-        <Eyebrow>{content.eyebrow}</Eyebrow>
-        <h2 className="mt-7 max-w-[860px] type-statement">
-          {content.statement}
-        </h2>
+        <FadeUp group className="flex flex-col items-center">
+          <Eyebrow>{content.eyebrow}</Eyebrow>
+          <h2 className="mt-7 max-w-215 font-sans font-semibold text-4xl tracking-tighter">
+            {content.statement}
+          </h2>
+        </FadeUp>
         {content.stats && (
           <CardGrid min="stat" className="mt-18 w-full max-stack:mt-12">
             {content.stats.map((stat) => (

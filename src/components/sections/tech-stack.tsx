@@ -17,6 +17,7 @@ import {
   TraefikLogo,
   TypeScriptLogo,
 } from "@/assets/logos"
+import { FadeUp } from "@/components/motion/fade-up"
 import { Container } from "@/components/ui/container"
 import { Section } from "@/components/ui/section"
 import { SectionHeader } from "@/components/ui/section-header"
@@ -58,7 +59,11 @@ export function TechStack({ content, id }: TechStackProps) {
           lead={content.lead}
           leadClassName="max-w-[540px]"
         />
-        <ul className="mt-18 flex flex-wrap items-start justify-center gap-x-2 gap-y-6 max-stack:gap-y-12">
+        <FadeUp
+          as="ul"
+          group
+          className="mt-18 flex flex-wrap items-start justify-center gap-x-2 gap-y-6 max-stack:gap-y-12"
+        >
           {content.categories.map((category) => (
             <li
               key={category.title}
@@ -76,7 +81,7 @@ export function TechStack({ content, id }: TechStackProps) {
               </h3>
             </li>
           ))}
-        </ul>
+        </FadeUp>
       </Container>
     </Section>
   )
