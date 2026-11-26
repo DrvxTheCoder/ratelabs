@@ -8,7 +8,7 @@ Everything on the site that is not real, verified or cleared yet, and where to c
 | --- | --- | --- |
 | Stats: 120+ projets, 9 ans, 99,98 % | **Unverified**, carried over from the old site | `stats` at the top of `src/content/fr.ts` |
 | Testimonials (3) | **Bracketed placeholder text**, no quotes, names or companies invented | `home.testimonials` in `src/content/fr.ts`. Hide the section: `flags.testimonials = false` in `src/content/site.ts` |
-| Client wordmarks: Senexus Group, Touba Oil, Touba Gaz, DIT School, Connect'Interim, IPM Tawfeikh | **Text stand-ins; permission to name each client is pending** | `src/content/clients.ts` (set `logo` to an SVG component). Hide the section: `flags.clients = false` |
+| Clients: Senexus Group, Touba Oil, Touba Gaz, Connect'Interim, IPM Tawfeikh | **Permission to name each client is pending** | `src/content/clients.ts` (put the file in `public/images/client-logos` and set `logo`). Hide the section: `flags.clients = false` |
 | Reply-time promise: "sous un jour ouvré", 30-minute call | **Unverified**, carried over from the old contact page | `contact` in `src/content/fr.ts` and `src/content/en.ts` |
 | English site | **Scaffold only.** Untranslated blocks are `todo(...)` and show French. `/en` is `noindex`, out of the sitemap, and not linked in production | `src/content/en.ts`, then add `"en"` to `publishedLocales` in `src/i18n/config.ts` |
 | `CONTACT_WEBHOOK_URL` | Required in production, otherwise the form reports a delivery failure | `.env` (see `.env.example`) |

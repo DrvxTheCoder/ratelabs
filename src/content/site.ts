@@ -14,7 +14,7 @@ export const routes = ["/", "/work", "/about", "/contact"] as const
 
 /** One switch per section that still relies on placeholder content. */
 export const flags = {
-  /** Text wordmarks: needs logos and the clients' permission. */
+  /** Needs the clients' permission. */
   clients: true,
   /** Bracketed placeholders: needs real quotes. */
   testimonials: true,

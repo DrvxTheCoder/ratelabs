@@ -1,25 +1,22 @@
 "use client"
 
 import { useRef } from "react"
+import Image from "next/image"
 import { cn } from "cn"
 
 import { EASE_SOFT, gsap, MOTION, useGSAP } from "@/components/motion/gsap"
 import { FadeUp } from "@/components/motion/fade-up"
 import { Section } from "@/components/ui/section"
-import { clients, type Client } from "@/content/clients"
+import { clients } from "@/content/clients"
 import type { ClientsContent } from "@/content/types"
 
-const COPIES = 4
+/** Even: the loop shifts by half the track, which must outspan the widest screens. */
+const COPIES = 6
+/** Seconds per loop. */
+const DURATION = 85
 const REST_OPACITY = 0.55
 
-type RowProps = {
-  items: Client[]
-  /** Seconds per loop. */
-  duration: number
-  reversed?: boolean
-}
-
-function MarqueeRow({ items, duration, reversed = false }: RowProps) {
+function MarqueeRow() {
   const row = useRef<HTMLDivElement>(null)
 
   useGSAP(
@@ -49,8 +46,8 @@ function MarqueeRow({ items, duration, reversed = false }: RowProps) {
           })
           .fromTo(
             "[data-track]",
-            { xPercent: reversed ? -50 : 0 },
-            { xPercent: reversed ? 0 : -50, duration, ease: "none" }
+            { xPercent: 0 },
+            { xPercent: -50, duration: DURATION, ease: "none" }
           )
 
         const speed = (timeScale: number) => () =>
@@ -78,15 +75,26 @@ function MarqueeRow({ items, duration, reversed = false }: RowProps) {
     <div ref={row} className="overflow-hidden">
       <div data-track className="flex w-max">
         {Array.from({ length: COPIES }, (_, copy) =>
-          items.map(({ name, wordmark, logo: LogoSvg }) => (
+          clients.map(({ name, wordmark, logo }) => (
             <div
               key={`${copy}-${name}`}
               data-logo
-              className="flex h-14 flex-none items-center px-11 whitespace-nowrap"
+              className="flex h-16 flex-none items-center px-11 whitespace-nowrap"
               style={{ opacity: REST_OPACITY }}
             >
-              {LogoSvg ? (
-                <LogoSvg className="h-8 w-auto" />
+              {logo ? (
+                // Eager: lazy logos would pop in as the track brings them on screen.
+                <Image
+                  src={logo.src}
+                  alt=""
+                  width={logo.width}
+                  height={logo.height}
+                  sizes="220px"
+                  quality={90}
+                  loading="eager"
+                  draggable={false}
+                  className={cn("w-auto max-w-none", logo.className)}
+                />
               ) : (
                 <span className={cn(wordmark)}>{name}</span>
               )}
@@ -110,10 +118,9 @@ export function ClientMarquee({ content }: { content: ClientsContent }) {
       </FadeUp>
       <FadeUp
         aria-hidden="true"
-        className="flex flex-col gap-3 mask-[linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)]"
+        className="mask-[linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)]"
       >
-        <MarqueeRow items={clients} duration={60} />
-        <MarqueeRow items={[...clients].reverse()} duration={70} reversed />
+        <MarqueeRow />
       </FadeUp>
     </Section>
   )
